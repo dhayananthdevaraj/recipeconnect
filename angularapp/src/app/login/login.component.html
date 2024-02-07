@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="login-wrapper">
+    <div class="login-left">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" formControlName="email" placeholder="Email" />
+            <div class="error" *ngIf="submitted && loginForm.get('email')?.hasError('required')">
+              Email is required
+            </div>
+            <div class="error" *ngIf="submitted && loginForm.get('email')?.hasError('pattern')">
+              Invalid email address
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="password" placeholder="Password" />
+            <div class="error" *ngIf="submitted && loginForm.get('password')?.hasError('required')">
+              Password is required
+            </div>
+            <div class="error" *ngIf="submitted && loginForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters
+            </div>
+          </div>
+          <button type="submit" class="login-button">Login</button>
+        </form>
+        <div class="signup-link">
+          Don't have an account? <a routerLink="/register">Signup</a>
+        </div>
+      </div>
+    </div>
+    <div class="login-right">
+      <h1>Recipe</h1>
+      <h1>Connect</h1>
+      <h4>Find Your recipe</h4>
+    </div>
+  </div>
+</div>

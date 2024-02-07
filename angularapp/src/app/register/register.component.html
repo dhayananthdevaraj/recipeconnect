@@ -1,0 +1,85 @@
+<!-- src/app/components/registration-form/registration-form.component.html -->
+
+<div class="registration-form">
+  <h1 class="heading"> Register</h1>
+  <label>
+    Select Role:
+    <select formControlName="role" (change)="handleInputChange($event, 'role')">
+      <option value="seller">Seller</option>
+      <option value="buyer">Buyer</option>
+    </select>
+    <div class="error" *ngIf="registrationForm.get('role')?.hasError('required') && registrationForm.get('role')?.touched">
+      Role is required.
+    </div>
+  </label>
+
+  <div class="form-grid">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName" (input)="handleInputChange($event, 'firstName')" />
+      <div class="error" *ngIf="registrationForm.get('firstName')?.hasError('required') && registrationForm.get('firstName')?.touched">
+        First Name is required.
+      </div>
+      <div class="error" *ngIf="registrationForm.get('firstName')?.hasError('minlength') && registrationForm.get('firstName')?.touched">
+        First Name must be at least 6 characters.
+      </div>
+    </label>
+
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName" (input)="handleInputChange($event, 'lastName')" />
+      <div class="error" *ngIf="registrationForm.get('lastName')?.hasError('required') && registrationForm.get('lastName')?.touched">
+        Last Name is required.
+      </div>
+    </label>
+
+    <label>
+      Mobile Number:
+      <input type="tel" formControlName="mobileNumber" (input)="handleInputChange($event, 'mobileNumber')" />
+      <div class="error" *ngIf="registrationForm.get('mobileNumber')?.hasError('required') && registrationForm.get('mobileNumber')?.touched">
+        Mobile Number is required.
+      </div>
+      <div class="error" *ngIf="registrationForm.get('mobileNumber')?.hasError('pattern') && registrationForm.get('mobileNumber')?.touched">
+        Invalid phone number.
+      </div>
+    </label>
+
+    <label>
+      E-mail Id:
+      <input type="email" formControlName="email" (input)="handleInputChange($event, 'email')" />
+      <div class="error" *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched">
+        Email is required.
+      </div>
+      <div class="error" *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched">
+        Invalid email address.
+      </div>
+    </label>
+
+    <label>
+      Password:
+      <input type="password" formControlName="password" (input)="handleInputChange($event, 'password')" />
+      <div class="error" *ngIf="registrationForm.get('password')?.hasError('required') && registrationForm.get('password')?.touched">
+        Password is required.
+      </div>
+      <div class="error" *ngIf="registrationForm.get('password')?.hasError('minlength') && registrationForm.get('password')?.touched">
+        Password must be at least 6 characters.
+      </div>
+    </label>
+
+    <label>
+      Confirm Password:
+      <input type="password" formControlName="confirmPassword" (input)="handleInputChange($event, 'confirmPassword')" />
+      <div class="error" *ngIf="registrationForm.get('confirmPassword')?.hasError('required') && registrationForm.get('confirmPassword')?.touched">
+        Confirm Password is required.
+      </div>
+      <div class="error" *ngIf="registrationForm.hasError('passwordMismatch')">
+        Passwords do not match.
+      </div>
+    </label>
+  </div>
+
+  <button class="register-button" type="button" (click)="handleSubmit()">Register</button>
+  <div class="login-link">
+    Already have an Account? <a routerLink="/login">Login</a>
+  </div>
+</div>
