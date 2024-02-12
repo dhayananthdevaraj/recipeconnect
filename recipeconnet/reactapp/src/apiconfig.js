@@ -1,3 +1,3 @@
 // config.js
- export const apiUrl = 'http://localhost:8080';
+ export const apiUrl = 'https://8080-abfdabeabcbaedbfedabcebcbaacdabebc.premiumproject.examly.io';
 
