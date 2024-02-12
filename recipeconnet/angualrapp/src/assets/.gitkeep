@@ -1,0 +1,51 @@
+Project Title: Neo Daily Quote App Structure
+Project Statement:
+This project aims to establish the structural foundation of the Neo Daily Quote App using React. Students will create and organize class-based and functional components to set up the basic layout of the application.
+
+Tech Stack:
+React
+Folder Structure:
+Organize the project structure as follows:
+
+markdown
+Copy code
+- reactapp/
+  - src/
+    - components/
+      - Display.js
+      - Footer.js
+      - Header.js
+    - App.js
+    - App.css
+    - logo.svg
+Component Details:
+Display Component (Display.js):
+
+Implement a functional component to display a loading message and an image placeholder for quotes.
+Footer Component (Footer.js):
+
+Create a functional component responsible for rendering the footer section, including the current year and app attribution.
+Header Component (Header.js):
+
+Develop a functional component to display the app title and navigation menu with different sections related to quotes.
+App Component (App.js):
+
+Utilize a class-based component to orchestrate the layout and render other components (Header, Display, Footer).
+Component Type Usage:
+Utilize class-based components (Header, Footer) for structural elements that might require state management or lifecycle methods.
+Implement functional components (Display) for presentational elements that don’t require state management or lifecycle methods.
+Sample Output:
+The application structure should encompass:
+
+An App class-based component organizing the layout and rendering other components.
+Placeholder content for quotes displayed within the Display component.
+The Header exhibiting the app title and navigation sections.
+The Footer presenting the current year and app attribution.
+Styling:
+Apply provided CSS styles from the App.css file to ensure consistent and visually appealing presentation across components.
+
+Platform Instructions:
+Navigate to the reactapp folder.
+Review and edit code within various components (Display.js, Footer.js, Header.js, App.js, App.css).
+Execute the project using npm start.
+Access and observe the application output in a web browser.

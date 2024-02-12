@@ -1,0 +1,54 @@
+<div class="create-product-container">
+  <button (click)="goBack()">Back</button>
+
+  <h2>{{ getEditId() === "" ? 'Create New Recipe' : 'Update Recipe' }}</h2>
+
+  <div class="form-group">
+    <label for="recipeName">Recipe Name:</label>
+    <input id="recipeName" type="text" name="recipeName" [(ngModel)]="productData.recipeName" (input)="handleInputChange($event)" />
+    <span class="error-message">{{ errors.recipeName }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="photo">Photo:</label>
+    <input id="photo" type="file" accept="image/*" (change)="handleFileChange($event)" />
+    <span class="error-message">{{ errors.photo }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" [(ngModel)]="productData.description" (input)="handleInputChange($event)"></textarea>
+    <span class="error-message">{{ errors.description }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="ingredients">Ingredients:</label>
+    <input id="ingredients" type="text" name="ingredients" [(ngModel)]="productData.ingredients" (input)="handleInputChange($event)" />
+    <span class="error-message">{{ errors.ingredients }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Recipe Category:</label>
+    <select id="category" name="category" [(ngModel)]="productData.category" (change)="handleInputChange($event)">
+      <option value="" disabled>Select recipe category</option>
+      <option *ngFor="let category of recipeCategories" [value]="category">{{ category }}</option>
+    </select>
+    <span class="error-message">{{ errors.category }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="servingSize">Serving Size:</label>
+    <input id="servingSize" type="number" name="servingSize" [(ngModel)]="productData.servingSize" (input)="handleInputChange($event)" />
+    <span class="error-message">{{ errors.servingSize }}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input id="price" type="number" name="price" [(ngModel)]="productData.price" (input)="handleInputChange($event)" />
+    <span class="error-message">{{ errors.price }}</span>
+  </div>
+
+  <button class='submit-button' type="button" (click)="handleCreateProduct()">
+    {{ getEditId() === "" ? 'Create Recipe' : 'Update Recipe' }}
+  </button>
+</div>

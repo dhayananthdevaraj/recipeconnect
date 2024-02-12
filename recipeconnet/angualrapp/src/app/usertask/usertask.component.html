@@ -1,0 +1,52 @@
+<div>
+  <div [ngClass]="{'popup-open': showDeletePopup || showLogoutPopup}" class="ProductsList">
+    <button class="styledbutton" (click)="setShowLogoutPopup(true)">Logout</button>
+    <button class="styledbutton" (click)="navigateToCreateProduct()">Add new Recipe</button>
+    <h1>My Recipe</h1>
+    <!-- Search functionality -->
+    <input class="search" type="text" placeholder="Search by recipe name" [(ngModel)]="searchTerm" (ngModelChange)="fun()" />
+  <hr />
+    <!-- Card layout -->
+    <div class="card-container">
+      <div *ngFor="let product of products" class="product-card">
+        <img src="{{ product.photo }}" alt="{{ product.recipeName }}" (click)="openPopup(product)" />
+        <div class="card-details">
+          <h2>{{ product.recipeName }}</h2>
+          <p>{{ product.description }}</p>
+          <p>Recipe Price: {{ product.price }}</p>
+          <p>Category: {{ product.category }}</p>
+          <div class="action-buttons">
+            <button class="styledbutton" style="background-color: red; width: 100px;" (click)="handleDeleteClick(product.recipeId)">Delete</button>
+            <button class="styledbutton" style="background-color: green; width: 100px;" (click)="navigateToEditProduct(product.recipeId)">Edit</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="products.length === 0" class="norecord">No records found</div>
+    </div>
+  </div>
+
+  <div *ngIf="showPopup && selectedRecipe" class="popup">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h2>{{ selectedRecipe.recipeName }}</h2>
+      <h2>Details</h2>
+      <p><strong>Description: </strong> {{ selectedRecipe.description }}</p>
+      <p><strong>Recipe Price: </strong>{{ selectedRecipe.price }}</p>
+      <p><strong>Category: </strong> {{ selectedRecipe.category }}</p>
+      <p><strong>Serve: </strong> {{ selectedRecipe.servingSize }}</p>
+      <p><strong>Ingrediants: </strong>{{ selectedRecipe.ingredients }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="showDeletePopup" class="delete-popup">
+    <p>Are you sure you want to delete?</p>
+    <button (click)="deleteFunction()">Yes, Delete</button>
+    <button (click)="setShowDeletePopup(false)">Cancel</button>
+  </div>
+
+  <div *ngIf="showLogoutPopup" class="delete-popup">
+    <p>Are you sure you want to Logout?</p>
+    <button (click)="logout()">Yes, Logout</button>
+    <button (click)="setShowLogoutPopup(false)">Cancel</button>
+  </div>
+</div>
