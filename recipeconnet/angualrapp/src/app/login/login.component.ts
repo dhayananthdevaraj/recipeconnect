@@ -32,8 +32,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value)
         .subscribe(
+          
           (response: any) => {
-
+            console.log(response);
             if (response.status === 200) {
 
               if (response.body.message === "Invalid Credentials") {
