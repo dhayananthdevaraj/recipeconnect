@@ -21,6 +21,9 @@
             <div class="error" *ngIf="submitted && loginForm.get('password')?.hasError('minlength')">
               Password must be at least 6 characters
             </div>
+            <div class="error" *ngIf="submitted && loginForm.get('password')?.hasError('manual')">
+              {{ loginForm.get('password')?.getError('manual') }}
+            </div>
           </div>
           <button type="submit" class="login-button">Login</button>
         </form>
